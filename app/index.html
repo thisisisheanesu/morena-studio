@@ -4,20 +4,29 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MORENA Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap">
 <style>
+/* Vambo's tokens, read from the live stylesheet at vambo.ai. Same system as MORENA Pay so the two
+   read as one company's products, with the film black kept for the frame because a shot preview
+   wants to look like a shot. */
 :root{
-  --ink:#0b0d10; --mute:#6b7280; --line:#e5e7eb; --panel:#fff; --bg:#f4f5f7;
-  --brand:#7c3aed; --brand2:#a855f7; --accent:#e8590c; --accent-soft:#fff3ea;
-  --ok:#15803d; --ok-soft:#eefaf1; --film:#111318;
-  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
-  --sans:ui-sans-serif,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+  --ink:#1a1a1a; --mute:#6f6f68; --faint:#9a9a92; --line:#e5e5e0; --panel:#fff; --bg:#f5f5f0;
+  --brand:#c62828; --brand2:#ef5350; --brand-dark:#b71c1c;
+  --accent:#c62828; --accent-soft:#fbeaea;
+  --ok:#2e7d32; --ok-soft:#eaf3ea; --film:#0a0a0a;
+  --r:.625rem; --r-xs:.125rem;
+  --mono:"Geist Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --sans:"League Spartan",ui-sans-serif,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --display:"League Spartan",ui-sans-serif,system-ui,sans-serif;
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 var(--sans);
   -webkit-font-smoothing:antialiased}
 .wrap{max-width:1120px;margin:0 auto;padding:26px 16px 70px}
 header{display:flex;align-items:baseline;gap:11px;flex-wrap:wrap;margin-bottom:6px}
-h1{margin:0;font-size:22px;letter-spacing:-.02em}
+h1{margin:0;font-family:var(--display);font-size:24px;font-weight:800;letter-spacing:-.02em}
 h1 em{font-style:normal;color:var(--brand)}
 .status{font:11px var(--mono);padding:4px 9px;border-radius:999px;border:1px solid var(--line);
   color:var(--mute);white-space:nowrap}
@@ -27,15 +36,15 @@ h1 em{font-style:normal;color:var(--brand)}
 
 .grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;align-items:start}
 @media(max-width:900px){.grid{grid-template-columns:1fr}}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:16px}
 .card h2{margin:0 0 12px;font-size:11px;font-weight:700;letter-spacing:.09em;
   text-transform:uppercase;color:var(--mute)}
 
 textarea{width:100%;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);
-  border-radius:12px;padding:12px 14px;font:15px/1.5 var(--sans);resize:vertical;min-height:92px}
+  border-radius:var(--r);padding:12px 14px;font:15px/1.5 var(--sans);resize:vertical;min-height:92px}
 textarea:focus{outline:none;border-color:var(--brand)}
 .row{display:flex;gap:9px;flex-wrap:wrap;align-items:center;margin-top:11px}
-button.go{background:var(--brand);color:#fff;border:0;border-radius:10px;cursor:pointer;
+button.go{background:var(--brand);color:#fff;border:0;border-radius:var(--r);cursor:pointer;
   font:700 14px var(--sans);padding:11px 20px}
 button.go:disabled{opacity:.4;cursor:not-allowed}
 .chip{font:500 12px var(--sans);padding:7px 12px;border-radius:999px;cursor:pointer;
@@ -44,7 +53,7 @@ button.go:disabled{opacity:.4;cursor:not-allowed}
 .chip b{font-weight:700;color:var(--ink)}
 
 /* the shot card: what a director would be handed */
-.shot{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--panel)}
+.shot{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--panel)}
 .frame{position:relative;background:var(--film);color:#fff;display:grid;place-items:center;
   min-height:150px;padding:18px;text-align:center}
 .frame .ratio{position:absolute;top:10px;left:12px;font:11px var(--mono);opacity:.72}
@@ -54,9 +63,9 @@ button.go:disabled{opacity:.4;cursor:not-allowed}
 .frame .bars i:first-child{top:0} .frame .bars i:last-child{bottom:0}
 .frame p{margin:0;font-size:14px;line-height:1.5;max-width:44ch;opacity:.95}
 .meta{display:flex;flex-wrap:wrap;gap:6px;padding:12px 14px;border-bottom:1px solid var(--line)}
-.tag{font:600 11px var(--sans);padding:5px 9px;border-radius:7px;background:var(--bg);
+.tag{font:600 11px var(--sans);padding:5px 9px;border-radius:var(--r-xs);background:var(--bg);
   color:var(--mute);border:1px solid var(--line)}
-.tag.cam{background:#f5f0ff;color:var(--brand);border-color:#e6dbff}
+.tag.cam{background:var(--accent-soft);color:var(--brand);border-color:#f3d6d6}
 .tag.on{background:var(--ok-soft);color:var(--ok);border-color:#bbe7c9}
 .tag.off{opacity:.55}
 .promptbox{padding:13px 14px;font:13px/1.6 var(--sans)}
@@ -64,15 +73,15 @@ button.go:disabled{opacity:.4;cursor:not-allowed}
   color:var(--mute);margin-bottom:6px}
 .promptbox .txt{white-space:pre-wrap;word-break:break-word}
 .actions{display:flex;gap:8px;padding:12px 14px;border-top:1px solid var(--line)}
-.actions button{flex:1;border:1px solid var(--line);background:var(--panel);border-radius:9px;
+.actions button{flex:1;border:1px solid var(--line);background:var(--panel);border-radius:var(--r);
   cursor:pointer;font:600 12.5px var(--sans);padding:9px;color:var(--ink)}
 .actions button:hover{background:var(--bg)}
 .actions button.pri{background:var(--ink);color:var(--panel);border-color:var(--ink)}
 
 pre{font:11.5px/1.5 var(--mono);background:var(--bg);border:1px solid var(--line);
-  border-radius:10px;padding:11px;overflow-x:auto;margin:10px 0 0;white-space:pre-wrap;
+  border-radius:var(--r);padding:11px;overflow-x:auto;margin:10px 0 0;white-space:pre-wrap;
   word-break:break-word}
-.verd{padding:9px 12px;border-radius:9px;font-size:13px;border:1px solid;margin-bottom:7px;
+.verd{padding:9px 12px;border-radius:var(--r);font-size:13px;border:1px solid;margin-bottom:7px;
   display:flex;gap:8px;align-items:flex-start}
 .verd.good{background:var(--ok-soft);border-color:var(--ok);color:var(--ok)}
 .verd.bad{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
@@ -92,7 +101,7 @@ pre{font:11.5px/1.5 var(--mono);background:var(--bg);border:1px solid var(--line
 .beat .dur{position:absolute;top:9px;right:12px;font:11px var(--mono);opacity:.7}
 .beat p{margin:16px 0 9px;font-size:13.5px;line-height:1.5;opacity:.95}
 .beattags{display:flex;flex-wrap:wrap;gap:5px}
-.beattags .tag{background:rgba(255,255,255,.1);color:#e9d5ff;border-color:rgba(255,255,255,.14)}
+.beattags .tag{background:rgba(198,40,40,.22);color:#ffc9c9;border-color:rgba(255,255,255,.14)}
 </style>
 </head>
 <body>
@@ -272,7 +281,8 @@ function render(call, asked){
       '<div class="promptbox"><div class="lab">prompt sent to seedance 2.5</div>' +
         '<div class="txt">'+esc(p)+"</div></div>" +
       '<div class="actions">' +
-        '<button id="copy" class="pri">Copy the JSON</button>' +
+        (window.__render ? '<button id="render" class="pri">Render it</button>' : "") +
+        '<button id="copy"' + (window.__render ? '' : ' class="pri"') + '>Copy the JSON</button>' +
         '<button id="showraw">Show the call</button>' +
       "</div>" +
     "</div>";
@@ -283,6 +293,74 @@ function render(call, asked){
     catch(_){ $("#raw").style.display=""; }
   };
   $("#showraw").onclick = () => { const r=$("#raw"); r.style.display = r.style.display==="none"?"":"none"; };
+  if($("#render")) $("#render").onclick = () => render(call);
+}
+
+/* Send the arguments to Seedance exactly as the model wrote them. The claim is that the
+   instruction is postable as written, so the page does not tidy it up on the way out: if it needs
+   tidying, that belongs in the fine-tune. */
+async function render(call){
+  var btn = $("#render"); if(!btn) return;
+  btn.disabled = true; btn.textContent = "Rendering";
+  var box = document.createElement("div");
+  box.className = "promptbox"; box.id = "renderbox";
+  box.innerHTML = '<div class="lab">seedance 2.5</div><div class="txt">' +
+    '<span class="dots"><i></i><i></i><i></i></span> sending it to Replicate. A 30 second clip ' +
+    'takes a few minutes.</div>';
+  var old = $("#renderbox"); if(old) old.remove();
+  document.querySelector(".shot").appendChild(box);
+  try{
+    var r = await fetch("/render", {method:"POST", headers:{"content-type":"application/json"},
+                                    body: JSON.stringify(call)});
+    var j = await r.json();
+    if(!r.ok){ box.querySelector(".txt").textContent = j.error || ("render failed: " + r.status);
+               btn.disabled=false; btn.textContent="Render it"; return; }
+    var url = pickVideo(j.output);
+    if(url){ showVideo(box, url); btn.textContent="Rendered"; return; }
+    poll(j.id, box, btn);
+  }catch(e){
+    box.querySelector(".txt").textContent = e.message;
+    btn.disabled = false; btn.textContent = "Render it";
+  }
+}
+
+function pickVideo(out){
+  if(!out) return null;
+  if(typeof out === "string") return out;
+  if(Array.isArray(out)) return out.length ? out[out.length-1] : null;
+  return out.video || out.url || null;
+}
+
+function showVideo(box, url){
+  box.innerHTML = '<div class="lab">seedance 2.5</div>' +
+    '<video src="'+esc(url)+'" controls playsinline style="width:100%;border-radius:var(--r);' +
+    'background:var(--film);display:block"></video>' +
+    '<div style="margin-top:8px"><a href="'+esc(url)+'" target="_blank" rel="noopener">Open the file</a></div>';
+}
+
+async function poll(id, box, btn){
+  // Seedance takes minutes for a long clip, so this waits rather than timing out at the first
+  // pending response. It gives up after ten minutes and says so instead of spinning forever.
+  var started = Date.now();
+  while(Date.now() - started < 600000){
+    await new Promise(r => setTimeout(r, 4000));
+    try{
+      var j = await (await fetch("/render/" + encodeURIComponent(id))).json();
+      if(j.status === "succeeded"){
+        var url = pickVideo(j.output);
+        if(url){ showVideo(box, url); btn.textContent = "Rendered"; return; }
+      }
+      if(j.status === "failed" || j.status === "canceled"){
+        box.querySelector(".txt").textContent = j.error || ("Seedance " + j.status);
+        btn.disabled = false; btn.textContent = "Render it"; return;
+      }
+      var secs = Math.round((Date.now()-started)/1000);
+      box.querySelector(".txt").innerHTML =
+        '<span class="dots"><i></i><i></i><i></i></span> ' + (j.status || "working") + ", " + secs + "s";
+    }catch(e){ /* a dropped poll is not a failure; the next one will pick it up */ }
+  }
+  box.querySelector(".txt").textContent = "Still going after ten minutes. Check Replicate directly.";
+  btn.disabled = false; btn.textContent = "Render it";
 }
 
 async function ask(){
@@ -320,6 +398,11 @@ $("#go").onclick = ask;
 $("#q").addEventListener("input", () => { $("#go").disabled = !$("#q").value.trim(); });
 $("#q").addEventListener("keydown", e => { if(e.key==="Enter" && (e.metaKey||e.ctrlKey)) ask(); });
 health();
+// Hide the render button entirely when the deployment has no Replicate token, rather than
+// offering a button that always errors.
+fetch("/render/enabled").then(r=>r.json()).then(function(j){
+  window.__render = !!j.enabled;
+}).catch(function(){ window.__render = false; });
 </script>
 </body>
 </html>
