@@ -79,11 +79,14 @@ class Studio:
         from fastapi import FastAPI, Request
         from fastapi.responses import FileResponse, JSONResponse
 
+        # See the note in morena-pay/serve.py: without this the page is cached for years.
+        NOCACHE = {"Cache-Control": "no-store, must-revalidate"}
+
         api = FastAPI(title="MORENA Studio")
 
         @api.get("/")
         def index():
-            return FileResponse("/ui/index.html")
+            return FileResponse("/ui/index.html", headers=NOCACHE)
 
         @api.get("/props")
         def props():
